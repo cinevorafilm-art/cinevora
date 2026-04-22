@@ -1,0 +1,121 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type WatchEntry = 
+ record {
+   lastWatched: int;
+   movieId: nat;
+   progressSeconds: nat;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserProfile = 
+ record {
+   createdAt: int;
+   email: text;
+   isPremium: bool;
+   myList: vec nat;
+   name: text;
+   subscriptionExpiry: opt int;
+   userId: text;
+   watchHistory: vec WatchEntry;
+ };
+type SubscriptionPlan = 
+ record {
+   durationMonths: nat;
+   features: vec text;
+   id: text;
+   name: text;
+   price: nat;
+ };
+type Subscription = 
+ record {
+   expiresAt: int;
+   isActive: bool;
+   planId: text;
+   startedAt: int;
+   userId: text;
+ };
+type MovieInput = 
+ record {
+   cast: vec text;
+   category: text;
+   description: text;
+   duration: text;
+   isPremium: bool;
+   isTopRated: bool;
+   isTrending: bool;
+   rating: float64;
+   thumbnailUrl: text;
+   title: text;
+   videoUrl: text;
+ };
+type Movie = 
+ record {
+   cast: vec text;
+   category: text;
+   createdAt: int;
+   description: text;
+   duration: text;
+   id: nat;
+   isPremium: bool;
+   isTopRated: bool;
+   isTrending: bool;
+   rating: float64;
+   thumbnailUrl: text;
+   title: text;
+   videoUrl: text;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  _initializeAccessControl: () -> ();
+  addMovie: (input: MovieInput) -> (Movie);
+  addToMyList: (userId: text, movieId: nat) -> (bool);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  cancelSubscription: (userId: text) -> (bool);
+  createOrUpdateUserProfile: (userId: text, name: text, email: text) ->
+   (UserProfile);
+  deleteMovie: (id: nat) -> (bool);
+  getCallerUserRole: () -> (UserRole) query;
+  getFreeMovies: () -> (vec Movie) query;
+  getMovie: (id: nat) -> (opt Movie) query;
+  getMovies: () -> (vec Movie) query;
+  getMoviesByCategory: (category: text) -> (vec Movie) query;
+  getMyList: (userId: text) -> (vec nat) query;
+  getPremiumMovies: () -> (vec Movie) query;
+  getSubscriptionPlans: () -> (vec SubscriptionPlan) query;
+  getTopRatedMovies: () -> (vec Movie) query;
+  getTrendingMovies: () -> (vec Movie) query;
+  getUserProfile: (userId: text) -> (opt UserProfile) query;
+  getUserSubscription: (userId: text) -> (opt Subscription) query;
+  getWatchHistory: (userId: text) -> (vec WatchEntry) query;
+  isCallerAdmin: () -> (bool) query;
+  removeFromMyList: (userId: text, movieId: nat) -> (bool);
+  searchMovies: (searchTerm: text) -> (vec Movie) query;
+  subscribe: (userId: text, planId: text) -> (Subscription);
+  updateMovie: (id: nat, input: MovieInput) -> (opt Movie);
+  updateWatchProgress: (userId: text, movieId: nat, progressSeconds: 
+   nat) -> (bool);
+}

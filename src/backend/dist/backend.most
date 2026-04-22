@@ -1,0 +1,87 @@
+// Version: 1.0.0
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type Movie__677744580 = Movie__912013496;
+type Movie__912013496 =
+  {
+    cast : [Text];
+    category : Text;
+    createdAt : Int;
+    description : Text;
+    duration : Text;
+    id : Nat;
+    isPremium : Bool;
+    isTopRated : Bool;
+    isTrending : Bool;
+    rating : Float;
+    thumbnailUrl : Text;
+    title : Text;
+    videoUrl : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Subscription__68545750 =
+  {
+    expiresAt : Int;
+    isActive : Bool;
+    planId : Text;
+    startedAt : Int;
+    userId : Text
+  };
+type Subscription__97149654 = Subscription__68545750;
+type UserRole__1073662873 = {#admin; #guest; #user};
+type UserState__815673468 =
+  {
+    createdAt : Int;
+    var email : Text;
+    var isPremium : Bool;
+    myList : List__415060402<Nat>;
+    var name : Text;
+    var subscriptionExpiry : ?Int;
+    userId : Text;
+    watchHistory : List__415060402<WatchEntry__557386007>
+  };
+type WatchEntry__322974125 =
+  {lastWatched : Int; movieId : Nat; progressSeconds : Nat};
+type WatchEntry__557386007 = WatchEntry__322974125;
+actor {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__605269027<Principal, UserRole__1073662873>
+    };
+  stable movieIdRef : {var value : Nat};
+  stable movies :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Movie__677744580]];
+      var elementIndex : Nat__490723111
+    };
+  stable var nextMovieId : Nat;
+  stable subscriptions :
+    {
+      var root : Node__46230540<Text, Subscription__97149654>;
+      var size : Nat__490723111
+    };
+  stable users :
+    {
+      var root : Node__46230540<Text, UserState__815673468>;
+      var size : Nat__490723111
+    }
+};

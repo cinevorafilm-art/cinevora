@@ -1,0 +1,29 @@
+{
+  "overview": "Cinevora is a premium OTT streaming platform with a dark luxury black-and-gold UI. It features a Netflix-style home page with hero banners and content carousels, Internet Identity authentication, a full-featured custom video player, free/premium content gating, subscription plans, a user profile with watch history and My List, real-time search, and a hidden admin panel for content management.",
+  "features": [
+    "Home page with auto-sliding hero banner and content carousels (Trending, Top Rated, Free, Premium)",
+    "Internet Identity authentication with user profile stored in backend",
+    "Custom video player with play/pause, seek, volume, fullscreen, and progress tracking",
+    "Free vs Premium content gating with subscription upgrade prompts",
+    "Subscription pricing page (₹99/month, ₹199/3-months)",
+    "Payment page with UPI/Card/Wallet UI structure (Razorpay-ready)",
+    "Profile page with subscription badge, My List, and Watch History",
+    "Real-time search filtering by title and category",
+    "Hidden admin panel at /admin for movie upload with Cloudinary-ready structure",
+    "6 pre-seeded demo movies (3 free, 3 premium) with full metadata",
+    "Black + gold glassmorphism design with glow hover effects and smooth animations",
+    "Mobile-first responsive layout with touch-friendly controls"
+  ],
+  "category": "entertainment",
+  "tags": [
+    "ott",
+    "streaming",
+    "movies",
+    "premium",
+    "dark-theme",
+    "video-player",
+    "subscription",
+    "admin-panel"
+  ],
+  "last_updated": "2026-04-22T16:48:54.622Z"
+}

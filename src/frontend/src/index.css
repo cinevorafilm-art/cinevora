@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk";
+    --font-body: "Plus Jakarta Sans";
+    --font-mono: "JetBrains Mono";
+    --radius: 0.625rem;
+
+    --background: 0.08 0.012 50;
+    --foreground: 0.94 0.008 60;
+    --card: 0.12 0.018 50;
+    --card-foreground: 0.94 0.008 60;
+    --popover: 0.14 0.018 50;
+    --popover-foreground: 0.94 0.008 60;
+
+    --primary: 0.72 0.18 70;
+    --primary-foreground: 0.08 0.012 50;
+
+    --secondary: 0.18 0.016 50;
+    --secondary-foreground: 0.88 0.008 60;
+    --muted: 0.18 0.016 50;
+    --muted-foreground: 0.55 0.008 60;
+
+    --accent: 0.65 0.2 45;
+    --accent-foreground: 0.95 0.005 45;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.92 0.01 25;
+
+    --border: 0.22 0.016 50;
+    --input: 0.22 0.016 50;
+    --ring: 0.72 0.18 70;
+
+    --chart-1: 0.72 0.18 70;
+    --chart-2: 0.65 0.2 45;
+    --chart-3: 0.55 0.18 15;
+    --chart-4: 0.62 0.15 40;
+    --chart-5: 0.75 0.18 60;
+
+    --sidebar: 0.12 0.018 50;
+    --sidebar-foreground: 0.94 0.008 60;
+    --sidebar-primary: 0.72 0.18 70;
+    --sidebar-primary-foreground: 0.08 0.012 50;
+    --sidebar-accent: 0.18 0.016 50;
+    --sidebar-accent-foreground: 0.88 0.008 60;
+    --sidebar-border: 0.22 0.016 50;
+    --sidebar-ring: 0.72 0.18 70;
+
+    --gradient-gold: linear-gradient(
+      135deg,
+      oklch(0.72 0.18 70),
+      oklch(0.65 0.16 65)
+    );
+    --gradient-gold-subtle: linear-gradient(
+      135deg,
+      oklch(0.72 0.18 70 / 0.15),
+      oklch(0.65 0.16 65 / 0.05)
+    );
+    --shadow-glow: 0 0 20px oklch(0.72 0.18 70 / 0.25), 0 0 40px
+      oklch(0.72 0.18 70 / 0.1);
+    --shadow-glow-lg: 0 0 30px oklch(0.72 0.18 70 / 0.35), 0 0 60px
+      oklch(0.72 0.18 70 / 0.15);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0.08 0.012 50;
+    --foreground: 0.94 0.008 60;
+    --card: 0.12 0.018 50;
+    --card-foreground: 0.94 0.008 60;
+    --popover: 0.14 0.018 50;
+    --popover-foreground: 0.94 0.008 60;
+    --primary: 0.72 0.18 70;
+    --primary-foreground: 0.08 0.012 50;
+    --secondary: 0.18 0.016 50;
+    --secondary-foreground: 0.88 0.008 60;
+    --muted: 0.18 0.016 50;
+    --muted-foreground: 0.55 0.008 60;
+    --accent: 0.65 0.2 45;
+    --accent-foreground: 0.95 0.005 45;
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.92 0.01 25;
+    --border: 0.22 0.016 50;
+    --input: 0.22 0.016 50;
+    --ring: 0.72 0.18 70;
+    --gradient-gold: linear-gradient(
+      135deg,
+      oklch(0.72 0.18 70),
+      oklch(0.65 0.16 65)
+    );
+    --gradient-gold-subtle: linear-gradient(
+      135deg,
+      oklch(0.72 0.18 70 / 0.15),
+      oklch(0.65 0.16 65 / 0.05)
+    );
+    --shadow-glow: 0 0 20px oklch(0.72 0.18 70 / 0.25), 0 0 40px
+      oklch(0.72 0.18 70 / 0.1);
+    --shadow-glow-lg: 0 0 30px oklch(0.72 0.18 70 / 0.35), 0 0 60px
+      oklch(0.72 0.18 70 / 0.15);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-color: oklch(0.08 0.012 50);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.28 0.02 50);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.72 0.18 70 / 0.6);
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .glow-gold {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-gold-lg {
+    box-shadow: var(--shadow-glow-lg);
+  }
+
+  .glow-gold-hover {
+    @apply transition-smooth hover:glow-gold;
+  }
+
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .bg-gradient-gold-subtle {
+    background: var(--gradient-gold-subtle);
+  }
+
+  .glass-card {
+    background: oklch(0.14 0.018 50 / 0.7);
+    backdrop-filter: blur(16px);
+    border: 1px solid oklch(0.72 0.18 70 / 0.15);
+    border-radius: 12px;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-smooth hover:border-primary/40 hover:glow-gold;
+  }
+
+  .btn-gold {
+    background: var(--gradient-gold);
+    color: oklch(0.08 0.012 50);
+    font-weight: 700;
+    @apply transition-smooth hover:glow-gold-lg hover:scale-105;
+  }
+
+  .btn-gold-outline {
+    background: transparent;
+    border: 1px solid oklch(0.72 0.18 70 / 0.5);
+    color: oklch(0.72 0.18 70);
+    @apply transition-smooth hover:border-primary hover:glow-gold hover:bg-primary/10;
+  }
+
+  .text-hero {
+    @apply text-5xl md:text-7xl font-display font-bold tracking-tight;
+  }
+
+  .text-section-heading {
+    @apply text-2xl md:text-3xl font-display font-bold tracking-tight;
+  }
+
+  .text-label {
+    @apply text-xs font-semibold tracking-widest uppercase;
+  }
+
+  .text-gold {
+    color: oklch(0.72 0.18 70);
+  }
+
+  .premium-badge {
+    background: var(--gradient-gold);
+    color: oklch(0.08 0.012 50);
+    @apply text-label px-2 py-0.5 rounded-full;
+  }
+
+  .section-divider {
+    border-top: 1px solid oklch(0.72 0.18 70 / 0.1);
+  }
+}
